@@ -14,4 +14,13 @@ class TipCalculatorTests {
         val actualTip = calculateTip(amount = amount, tipPercent = tipPercent, false)
         assertEquals(expectedTip, actualTip)
     }
+
+    @Test
+    fun calculateTip_20PercentRoundup() {
+        val amount = 250.45
+        val tipPercent = 20.00
+        val expectedTip = NumberFormat.getCurrencyInstance().format(51)
+        val actualTip = calculateTip(amount = amount, tipPercent = tipPercent, true)
+        assertEquals(expectedTip, actualTip)
+    }
 }
